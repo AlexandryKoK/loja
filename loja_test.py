@@ -1,8 +1,8 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import plotly.figure_factory as ff
-import matplotlib.pyplot as plt
+#import plotly.figure_factory as ff
+#import matplotlib.pyplot as plt
 import random
 import string
 
@@ -55,9 +55,9 @@ if st.button('Salvar!'):
     vendas = vendas[vendas["data"].str.contains("data") == False]
     st.write(vendas)
     #vendas['data'].hist()
-    fig, ax = plt.subplots()
-    ax.hist(vendas['data'])
-    st.pyplot(fig)
+    #fig, ax = plt.subplots()
+    #ax.hist(vendas['data'])
+    #st.pyplot(fig)
 
 
 
