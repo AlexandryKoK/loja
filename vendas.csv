@@ -1,0 +1,46 @@
+0.0,05/14/2022,['Brahma 269ml'],PIX,36.0
+2.0,05/14/2022,['Heineken long neck 330ml'],PIX,37.0
+4.0,05/15/2022,['Antarctica 269ml'],PIX,36.0
+6.0,05/16/2022,['Coca cola 2L'],PIX,8.0
+8.0,05/17/2022,['Antarctica 269ml'],PIX,36.0
+10.0,05/17/2022,['Amstel 269ml'],PIX,33.0
+12.0,05/18/2022,['Devassa 269ml'],PIX,33.0
+14.0,05/18/2022,['Heineken Shot '],PIX,37.0
+16.0,05/16/2022,['Eisenbahn 350ml'],PIX,50.0
+18.0,05/16/2022,['Budweiser lata 269ml'],PIX,25.0
+20.0,05/16/2022,"[None, None]",PIX,0.0
+22.0,05/16/2022,"['None', 'None']",Cartão,200.0
+24.0,05/16/2022,<generator object <genexpr> at 0x7f666332db30>,Cartão,200.0
+26.0,05/16/2022,<generator object <genexpr> at 0x7f666332db30>,PIX,25.0
+28.0,05/16/2022,NoneNone,PIX,25.0
+30.0,05/16/2022,NoneNone,PIX,25.0
+32.0,05/16/2022,NoneNone,PIX,25.0
+34.0,05/16/2022,['Brahma 269ml'],PIX,200.0
+36.0,05/16/2022,['Brahma 269ml'],PIX,200.0
+38.0,05/16/2022,"['Brahma 269ml', 'Devassa 350ml ']",PIX,200.0
+40.0,05/16/2022,NoneNone,PIX,200.0
+42.0,05/16/2022,NoneNone,PIX,0.0
+44.0,05/16/2022,NoneNone,PIX,0.0
+46.0,05/16/2022,"Brahma 269ml (1),  Devassa 269ml (2), ",PIX,0.0
+48.0,05/16/2022,"Brahma 269ml (3),  Devassa 269ml (2),  Sao joao da barra (1),  Ice Smirnoff 275ml (3), ",Dinheiro,300.0
+50.0,05/16/2022,"Antarctica 269ml (2), ",Dinheiro,72.0
+52.0,05/16/2022,"Antarctica 269ml (2), ",Dinheiro,72.0
+54.0,05/16/2022,"Antarctica 269ml (2)
+ ",Dinheiro,72.0
+56.0,05/16/2022,"Antarctica 269ml (2)
+  Devassa 269ml (1)
+ ",Dinheiro,72.0
+58.0,05/16/2022,"Antarctica 269ml (2),  Devassa 269ml (1), ",Dinheiro,72.0
+60.0,16/05/2022,"Antarctica 269ml (2),  Devassa 269ml (1), ",Dinheiro,72.0
+62.0,16/05/2022,"Antarctica 269ml (2),  Devassa 269ml (1), ",Dinheiro,72.0
+64.0,16/05/2022,"Antarctica 269ml (2),  Devassa 269ml (1), ",Dinheiro,72.0
+66.0,16/05/2022,"Antarctica 269ml (2),  Devassa 269ml (1), ",Dinheiro,72.0
+68.0,08/12/2022,"Antarctica 269ml (2),  Devassa 269ml (1), ",Dinheiro,72.0
+70.0,08/12/2022,"Antarctica 269ml (2),  Devassa 269ml (1), ",Dinheiro,72.0
+72.0,08/12/2022,"Antarctica 269ml (2),  Devassa 269ml (1), ",Dinheiro,72.0
+74.0,08/12/2022,"Antarctica 269ml (2),  Devassa 269ml (1), ",PIX,72.0
+76.0,16/05/2022,"Coca cola lata 220ml Mini (1), ",PIX,3.0
+78.0,17/05/2022,"Frutella (2),  Devassa 269ml (1), ",PIX,20.0
+80.0,18/05/2022,"Antarctica 269ml (2),  Itaipava 269ml (2), ",Cartão,5.0
+82.0,18/05/2022,"Brahma 269ml (1), ",Cartão,36.0
+43.0,18/05/2022,"Devassa 350ml  (1), ",Dinheiro,33.0
