@@ -5,10 +5,32 @@ import plotly.figure_factory as ff
 import matplotlib.pyplot as plt
 import random
 import string
+from datetime import datetime
+
 
 st.write("""
 # Dany Conveniência!
 """)
+
+vendas = pd.read_table("vendas.csv",sep=',',names=['data','item','Dinheiro','Cartao','PIX'])
+vendas['Mes'] = vendas['data'].str[4:5]
+vendas = vendas[vendas["data"].str.contains("data") == False]
+
+
+Total_PIX = vendas['PIX'].sum()
+Total_cartao = vendas['Cartao'].sum()
+Total_dinheiro = vendas['Dinheiro'].sum()
+
+col1, col2, col3 = st.columns(3)
+col1.metric(label="PIX", value=('R$ %.2f'% Total_PIX))
+col2.metric(label="Cartão", value=('R$ %.2f'% Total_cartao))
+col3.metric(label="Dinheiro", value=('R$ %.2f'% Total_dinheiro))
+
+
+
+#st.metric(label="PIX", value=('R$ %.2f'% Total_PIX), delta="1.2 °F")
+#st.metric(label="Cartão", value=('R$ %.2f'% Total_cartao), delta="1.2 °F")
+#st.metric(label="Dinheiro", value=('R$ %.2f'% Total_dinheiro), delta="1.2 °F")
 
 #vendas = pd.read_table("vendas.csv",sep=',',names=['data','item','pagamento','valor'])
 #vendas = vendas[vendas["data"].str.contains("data") == False]
@@ -33,7 +55,7 @@ n = len(nome)
 col = []
 for i in range(0,n):
      a = str(nome[i])
-     b = str(st.number_input(nome[i],key=i,step=1))
+     b = str(st.number_input(nome[i],key=i,step=1,min_value=1))
      #a = st.write(str(nome[i]) + ' ' + str(st.number_input(nome[i],key=i,step=1)))
      col.insert(i,a + ' (' + b+ '), ')
      #st.write(col[i])
@@ -66,9 +88,20 @@ if st.button('Salvar!'):
     vendas = pd.read_table("vendas.csv",sep=',',names=['data','item','Dinheiro','Cartao','PIX'])
     vendas['Mes'] = vendas['data'].str[3:5]
     vendas = vendas[vendas["data"].str.contains("data") == False]
-    st.write(vendas)
+    #st.write(vendas)
     #vendas['data'].hist()
     #fig, ax = plt.subplots()
     #ax.hist(vendas['data'])
     #st.pyplot(fig)
 
+
+
+st.title("Vendas até o momento!")
+#if st.button('Ver vendas'):
+    #st.write('Vendas até o momento:')
+    #vendas = vendas[vendas.data != "data"]
+    #vendas.to_csv('vendas.csv',header=False)
+vendas = pd.read_table("vendas.csv",sep=',',names=['data','item','Dinheiro','Cartao','PIX'])
+vendas['Mes'] = vendas['data'].str[3:5]
+vendas = vendas[vendas["data"].str.contains("data") == False]
+st.write(vendas)
