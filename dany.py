@@ -6,20 +6,23 @@ import matplotlib.pyplot as plt
 import random
 import string
 from datetime import datetime
+import calendar
+
+
 
 
 st.write("""
 # Dany Conveniência!
 """)
 
-vendas = pd.read_table("vendas.csv",sep=',',names=['data','item','Dinheiro','Cartao','PIX'])
+vendas = pd.read_table("vendas.csv",sep=',',decimal=".",names=['data','item','Dinheiro','Cartao','PIX'])
 vendas['Mes'] = vendas['data'].str[4:5]
 vendas = vendas[vendas["data"].str.contains("data") == False]
 
 
-Total_PIX = vendas['PIX'].sum()
-Total_cartao = vendas['Cartao'].sum()
-Total_dinheiro = vendas['Dinheiro'].sum()
+Total_PIX = (vendas['PIX'].str.replace(',', '.').astype(float)).sum()
+Total_cartao = (vendas['Cartao'].str.replace(',', '.').astype(float)).sum()
+Total_dinheiro = (vendas['Dinheiro'].str.replace(',', '.').astype(float)).sum()
 
 col1, col2, col3 = st.columns(3)
 col1.metric(label="PIX", value=('R$ %.2f'% Total_PIX))
@@ -43,7 +46,7 @@ sheet_id = "1Q-DzfuwRTqLni1doeQH3gY2Lhw9fcyQdImUi3qisseA"
 sheet_name = "Tudo(Atualizado)"
 url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name}"
 
-produtos = pd.read_table(url, sep = ',',names=['item','produto','unidade','ifood','categoria'])
+produtos = pd.read_table(url, sep=',', decimal=",",names=['item','produto','unidade','ifood','categoria'])
 st.write(produtos)
 col = []
 st.title("Adicionar Venda!")
@@ -84,7 +87,7 @@ vendas.loc[len(vendas.index)] = [(data).strftime('%d/%m/%Y'),str(vendidos), floa
 if st.button('Salvar!'):
     st.write('Salvo!')
     vendas = vendas[vendas.data != "data"]
-    vendas.to_csv('vendas.csv',header=False)
+    vendas.to_csv('vendas.csv',sep=',', decimal=",",header=False)
     vendas = pd.read_table("vendas.csv",sep=',',names=['data','item','Dinheiro','Cartao','PIX'])
     vendas['Mes'] = vendas['data'].str[3:5]
     vendas = vendas[vendas["data"].str.contains("data") == False]
@@ -101,7 +104,26 @@ st.title("Vendas até o momento!")
     #st.write('Vendas até o momento:')
     #vendas = vendas[vendas.data != "data"]
     #vendas.to_csv('vendas.csv',header=False)
-vendas = pd.read_table("vendas.csv",sep=',',names=['data','item','Dinheiro','Cartao','PIX'])
+
+vendas = pd.read_table("vendas.csv",sep=',', decimal=",",names=['data','item','Dinheiro','Cartao','PIX'])
 vendas['Mes'] = vendas['data'].str[3:5]
+vendas['Total'] = vendas['PIX'].str.replace(',', '.').astype(float) + vendas['Cartao'].str.replace(',', '.').astype(float) + vendas['Dinheiro'].str.replace(',', '.').astype(float)
 vendas = vendas[vendas["data"].str.contains("data") == False]
+vendas['PIX'] = vendas['PIX'].astype(str).str.replace('.',',')
+vendas['Cartao'] = vendas['Cartao'].astype(str).str.replace('.',',')
+vendas['Dinheiro'] = vendas['Dinheiro'].astype(str).str.replace('.',',')
+total = vendas.groupby(['data'])['Total'].sum().reset_index()
+vendas['Total'] = vendas['Total'].astype(str).str.replace('.',',')
+total['Total'] = total['Total'].astype(str).str.replace('.',',')
+#total['Dia'] = total['data'].dt.day_name('%d/%m/%Y')
+total = total.sort_values(by="data")
 st.write(vendas)
+st.subheader("Vendas por dia:")
+st.write(total)
+
+
+#st.subheader("Vendas por produto:")
+#qtd = st.selectbox("Escolha o item:",lista_itens,key=7)
+#num = vendas.item.apply(lambda st: st[st.find("(")+1:st.find(")")])
+#st.subheader(vendas.item.str.count(qtd).sum())
+#st.write(vendas.iloc[:,1].apply(lambda st: st[st.find("(")+1:st.find(")")]))
